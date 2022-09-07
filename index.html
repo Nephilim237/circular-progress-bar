@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="styles.css" />
+	<title>Progress Bar</title>
+</head>
+
+<body>
+	<div class="main">
+		<div class="outer">
+			<div class="inner">
+				<div id="progressNumber">0%</div>
+			</div>
+		</div>
+		<svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<defs>
+				<linearGradient id="GradientColor">
+					<stop offset="0%" stop-color="#00f7ff" stop-opacity="" />
+					<stop offset="100%" stop-color="#673ab7" stop-opacity="" />
+				</linearGradient>
+			</defs>
+			<circle cx="100" cy="100" r="90" id="circle" stroke-linecap="round" />
+		</svg>
+
+		<input type="text" placeholder="Ajouter une valeur" id="percentValue" />
+	</div>
+
+	<script type="text/javascript">
+		document.getElementById('percentValue').addEventListener('change', (e) => {
+			let val = parseInt(e.target.value);
+			let circle = document.getElementById('circle');
+			let r = circle.getAttribute('r');
+			let circ = Math.PI * 2 * r;
+			let counter = 0;
+
+			if (isNaN(val)) {
+				val = 100;
+			}
+			if (val < 0) {
+				val = 0;
+			}
+			if (val > 100) {
+				val = 100;
+			}
+			if (val === 0) {
+				document.getElementById('progressNumber').innerText = '0%';
+			}
+			let fillValue = (circ * (100 - val)) / 100;
+
+			circle.style.strokeDashoffset = fillValue;
+
+			setInterval(() => {
+				if (counter === val) {
+					clearInterval();
+				} else {
+					counter += 1;
+					document.getElementById('progressNumber').innerText = counter + '%';
+				}
+			}, 1000 / val);
+			console.log(fillValue);
+		});
+	</script>
+</body>
+
+</html>

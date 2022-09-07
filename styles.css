@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #232528;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main {
+    width: 200px;
+    position: relative;
+}
+
+.outer {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.75),
+        -6px -6px 10px -1px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+}
+
+.inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.85),
+        inset -4px -4px 6px -1px rgba(255, 255, 255, 0.85),
+        -0.5px -0.5px 0 rgba(255, 255, 255, 1);
+    padding: 20px;
+}
+
+#progressNumber {
+    font-weight: 600;
+    font-size: 40px;
+    color: #fefaf9;
+}
+
+#circle {
+    fill: none;
+    stroke-width: 20px;
+    stroke: url(#GradientColor);
+    stroke-dashoffset: 565.48;
+    stroke-dasharray: 565.48;
+    transition: stroke-dashoffset 1s ease-in;
+}
+
+svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+input {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 20px;
+}
