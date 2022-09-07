@@ -10,60 +10,51 @@
 </head>
 
 <body>
-	<div class="main">
+	<div class="container">
 		<div class="outer">
 			<div class="inner">
-				<div id="progressNumber">0%</div>
+				<div id="progressNumber1" class="progressNumber">0%</div>
+			</div>
+		</div>
+		<svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+			<circle cx="100" cy="100" r="90" id="circle1" class="circle" stroke-linecap="round" />
+		</svg>
+
+		<input type="text" placeholder="Ajouter une valeur" id="percentValue1" class="percentValue" />
+	</div>
+	<div class="container">
+		<div class="outer">
+			<div class="inner">
+				<div id="progressNumber2" class="progressNumber">0%</div>
+			</div>
+		</div>
+		<svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<circle cx="100" cy="100" r="90" id="circle2" class="circle" stroke-linecap="round" />
+		</svg>
+
+		<input type="text" placeholder="Ajouter une valeur" id="percentValue2" class="percentValue" />
+	</div>
+	<div class="container">
+		<div class="outer">
+			<div class="inner">
+				<div id="progressNumber3" class="progressNumber">0%</div>
 			</div>
 		</div>
 		<svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<defs>
 				<linearGradient id="GradientColor">
-					<stop offset="0%" stop-color="#00f7ff" stop-opacity="" />
-					<stop offset="100%" stop-color="#673ab7" stop-opacity="" />
+					<stop offset="0%" stop-color="#9dffb3" stop-opacity="" />
+					<stop offset="100%" stop-color="#1aa37a" stop-opacity="" />
 				</linearGradient>
 			</defs>
-			<circle cx="100" cy="100" r="90" id="circle" stroke-linecap="round" />
+			<circle cx="100" cy="100" r="90" id="circle3" class="circle" stroke-linecap="round" />
 		</svg>
 
-		<input type="text" placeholder="Ajouter une valeur" id="percentValue" />
+		<input type="text" placeholder="Ajouter une valeur" id="percentValue3" class="percentValue" />
 	</div>
 
-	<script type="text/javascript">
-		document.getElementById('percentValue').addEventListener('change', (e) => {
-			let val = parseInt(e.target.value);
-			let circle = document.getElementById('circle');
-			let r = circle.getAttribute('r');
-			let circ = Math.PI * 2 * r;
-			let counter = 0;
-
-			if (isNaN(val)) {
-				val = 100;
-			}
-			if (val < 0) {
-				val = 0;
-			}
-			if (val > 100) {
-				val = 100;
-			}
-			if (val === 0) {
-				document.getElementById('progressNumber').innerText = '0%';
-			}
-			let fillValue = (circ * (100 - val)) / 100;
-
-			circle.style.strokeDashoffset = fillValue;
-
-			setInterval(() => {
-				if (counter === val) {
-					clearInterval();
-				} else {
-					counter += 1;
-					document.getElementById('progressNumber').innerText = counter + '%';
-				}
-			}, 1000 / val);
-			console.log(fillValue);
-		});
-	</script>
+	<script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>
